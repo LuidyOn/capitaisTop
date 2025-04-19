@@ -58,3 +58,24 @@ class Grafo {
         return caminho;
     }
 }
+
+class Aresta {
+    String destino;
+    int distancia;
+
+    public Aresta(String destino, int distancia) {
+        this.destino = destino;
+        this.distancia = distancia;
+    }
+
+}
+
+class Result {
+    List<String> caminho;
+    int distancia;
+
+    public Result(List<String> caminho, int distancia) {
+        this.caminho = caminho;
+        this.distancia = distancia;
+    }
+}
