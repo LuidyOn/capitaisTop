@@ -42,5 +42,41 @@ public class Main {
         grafo.adicionarAresta("TO", "DF", 873);
         grafo.adicionarAresta("GO", "TO", 874);
         grafo.adicionarAresta("MT", "PA", 1660);
+
+        System.out.println("Para facilitar, digite apenas a Sigla dos Estados.");
+        System.out.println();
+        System.out.println("AC - Rio Branco");
+        System.out.println("AL - Maceió");
+        System.out.println("AP - Macapá");
+        System.out.println("AM - Manaus");
+        System.out.println("BA - Salvador");
+        System.out.println("CE - Fortaleza");
+        System.out.println("DF - Brasília");
+        System.out.println("ES - Vitória");
+        System.out.println("GO - Goiânia");
+        System.out.println("MA - São Luís");
+        System.out.println("MT - Cuiabá");
+        System.out.println("MS - Campo Grande");
+        System.out.println("MG - Belo Horizonte");
+        System.out.println("PA - Belém");
+        System.out.println("PB - João Pessoa");
+        System.out.println("PR - Curitiba");
+        System.out.println("PE - Recife");
+        System.out.println("PI - Teresina");
+        System.out.println("RJ - Rio de Janeiro");
+        System.out.println("RN - Natal");
+        System.out.println("RS - Porto Alegre");
+        System.out.println("RO - Porto Velho");
+        System.out.println("RR - Boa Vista");
+        System.out.println("SC - Florianópolis");
+        System.out.println("SP - São Paulo");
+        System.out.println("SE - Aracaju");
+        System.out.println("TO - Palmas");
+        System.out.println();
+
+        System.out.print("Digite a capital de origem: ");
+        String origem = scanner.nextLine().trim().toLowerCase();
+        System.out.print("Digite a capital de destino: ");
+        String destino = scanner.nextLine().trim().toLowerCase();
     }
 }
