@@ -1,5 +1,46 @@
-public class capitais {
-    public static void main(String[] args) throws Exception {
-        System.out.println("Testanto...");
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Grafo grafo = new Grafo();
+
+        grafo.adicionarAresta("SP", "RJ", 429);
+        grafo.adicionarAresta("SP", "MG", 586);
+        grafo.adicionarAresta("RJ", "ES", 521);
+        grafo.adicionarAresta("ES", "MG", 522);
+
+        grafo.adicionarAresta("SP", "PR", 408);
+        grafo.adicionarAresta("PR", "SC", 300);
+        grafo.adicionarAresta("SC", "RS", 476);
+
+        grafo.adicionarAresta("MG", "GO", 906);
+        grafo.adicionarAresta("GO", "DF", 209);
+        grafo.adicionarAresta("DF", "MT", 1133);
+        grafo.adicionarAresta("MT", "MS", 694);
+        grafo.adicionarAresta("MS", "GO", 835);
+
+        grafo.adicionarAresta("BA", "SE", 356);
+        grafo.adicionarAresta("SE", "AL", 294);
+        grafo.adicionarAresta("AL", "PE", 285);
+        grafo.adicionarAresta("PE", "PB", 117);
+        grafo.adicionarAresta("PB", "RN", 185);
+        grafo.adicionarAresta("PE", "PI", 1024);
+        grafo.adicionarAresta("PI", "MA", 446);
+        grafo.adicionarAresta("BA", "PI", 1124);
+        grafo.adicionarAresta("MA", "CE", 985);
+        grafo.adicionarAresta("CE", "RN", 538);
+
+        grafo.adicionarAresta("TO", "PA", 966);
+        grafo.adicionarAresta("TO", "MA", 808);
+        grafo.adicionarAresta("PA", "AP", 839);
+        grafo.adicionarAresta("PA", "AM", 2581);
+        grafo.adicionarAresta("AM", "RR", 785);
+        grafo.adicionarAresta("AM", "RO", 901);
+        grafo.adicionarAresta("RO", "AC", 544);
+        grafo.adicionarAresta("MT", "RO", 1452);
+        grafo.adicionarAresta("TO", "DF", 873);
+        grafo.adicionarAresta("GO", "TO", 874);
+        grafo.adicionarAresta("MT", "PA", 1660);
     }
 }
