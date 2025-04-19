@@ -80,3 +80,15 @@ public class Main {
         String destino = scanner.nextLine().trim().toLowerCase();
     }
 }
+
+Result resultado = grafo.dijkstra(origem, destino);
+
+        if (resultado.caminho.size() > 1) {
+            System.out.println("Menor caminho: " + String.join(" -> ", resultado.caminho) + " | Distância total: " + resultado.distancia + " km");
+        } else {
+            System.out.println("Não há caminho disponível entre as capitais selecionadas.");
+        }
+
+        scanner.close();
+    }
+}
