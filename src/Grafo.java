@@ -40,3 +40,21 @@ class Grafo {
                 }
             }
         }
+
+        List<String> caminho = reconstruirCaminho(origem, destino, predecessores);
+        int distanciaTotal = distancias.get(destino);
+
+        return new Result(caminho, distanciaTotal);
+    }
+
+    private List<String> reconstruirCaminho(String origem, String destino, Map<String, String> predecessores) {
+        List<String> caminho = new ArrayList<>();
+        String passo = destino;
+        while (passo != null) {
+            caminho.add(passo);
+            passo = predecessores.get(passo);
+        }
+        Collections.reverse(caminho);
+        return caminho;
+    }
+}
