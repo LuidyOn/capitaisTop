@@ -16,6 +16,8 @@ class Grafo {
         adjacencia.get(destino).add(new Aresta(origem, distancia));
     }
 
+    // estudar dps
+
     public Result dijkstra(String origem, String destino) {
         origem = origem.toLowerCase();
         destino = destino.toLowerCase();
@@ -28,6 +30,8 @@ class Grafo {
         }
         distancias.put(origem, 0);
         filaPrioridade.add(new Aresta(origem, 0));
+
+        // ve ai dps
 
         while (!filaPrioridade.isEmpty()) {
             Aresta atual = filaPrioridade.poll();
