@@ -1,92 +1,96 @@
+import model.*;
+import utils.NomesCapitais;
 import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
+        GrafoCapitais grafo = inicializarGrafo();
         Scanner scanner = new Scanner(System.in);
-        Grafo grafo = new Grafo();
 
-        grafo.adicionarAresta("SP", "RJ", 429);
-        grafo.adicionarAresta("SP", "MG", 586);
-        grafo.adicionarAresta("RJ", "ES", 521);
-        grafo.adicionarAresta("ES", "MG", 522);
-
-        grafo.adicionarAresta("SP", "PR", 408);
-        grafo.adicionarAresta("PR", "SC", 300);
-        grafo.adicionarAresta("SC", "RS", 476);
-
-        grafo.adicionarAresta("MG", "GO", 906);
-        grafo.adicionarAresta("GO", "DF", 209);
-        grafo.adicionarAresta("DF", "MT", 1133);
-        grafo.adicionarAresta("MT", "MS", 694);
-        grafo.adicionarAresta("MS", "GO", 835);
-
-        grafo.adicionarAresta("BA", "SE", 356);
-        grafo.adicionarAresta("SE", "AL", 294);
-        grafo.adicionarAresta("AL", "PE", 285);
-        grafo.adicionarAresta("PE", "PB", 117);
-        grafo.adicionarAresta("PB", "RN", 185);
-        grafo.adicionarAresta("PE", "PI", 1024);
-        grafo.adicionarAresta("PI", "MA", 446);
-        grafo.adicionarAresta("BA", "PI", 1124);
-        grafo.adicionarAresta("MA", "CE", 985);
-        grafo.adicionarAresta("CE", "RN", 538);
-
-        grafo.adicionarAresta("TO", "PA", 966);
-        grafo.adicionarAresta("TO", "MA", 808);
-        grafo.adicionarAresta("PA", "AP", 839);
-        grafo.adicionarAresta("PA", "AM", 2581);
-        grafo.adicionarAresta("AM", "RR", 785);
-        grafo.adicionarAresta("AM", "RO", 901);
-        grafo.adicionarAresta("RO", "AC", 544);
-        grafo.adicionarAresta("MT", "RO", 1452);
-        grafo.adicionarAresta("TO", "DF", 873);
-        grafo.adicionarAresta("GO", "TO", 874);
-        grafo.adicionarAresta("MT", "PA", 1660);
-
-        System.out.println("Para facilitar, digite apenas a Sigla dos Estados.");
-        System.out.println();
-        System.out.println("AC - Rio Branco");
-        System.out.println("AL - Maceió");
-        System.out.println("AP - Macapá");
-        System.out.println("AM - Manaus");
-        System.out.println("BA - Salvador");
-        System.out.println("CE - Fortaleza");
-        System.out.println("DF - Brasília");
-        System.out.println("ES - Vitória");
-        System.out.println("GO - Goiânia");
-        System.out.println("MA - São Luís");
-        System.out.println("MT - Cuiabá");
-        System.out.println("MS - Campo Grande");
-        System.out.println("MG - Belo Horizonte");
-        System.out.println("PA - Belém");
-        System.out.println("PB - João Pessoa");
-        System.out.println("PR - Curitiba");
-        System.out.println("PE - Recife");
-        System.out.println("PI - Teresina");
-        System.out.println("RJ - Rio de Janeiro");
-        System.out.println("RN - Natal");
-        System.out.println("RS - Porto Alegre");
-        System.out.println("RO - Porto Velho");
-        System.out.println("RR - Boa Vista");
-        System.out.println("SC - Florianópolis");
-        System.out.println("SP - São Paulo");
-        System.out.println("SE - Aracaju");
-        System.out.println("TO - Palmas");
-        System.out.println();
-
+        exibirCabecalho();
+        exibirSiglasCapitais();
+        
         System.out.print("Digite a capital de origem: ");
-        String origem = scanner.nextLine().trim().toLowerCase();
+        String origem = scanner.nextLine().toUpperCase();
+        
         System.out.print("Digite a capital de destino: ");
-        String destino = scanner.nextLine().trim().toLowerCase();
-    
-        Result resultado = grafo.dijkstra(origem, destino);
-
-        if (resultado.caminho.size() > 1) {
-            System.out.println("Menor caminho: " + String.join(" -> ", resultado.caminho) + " | Distância total: " + resultado.distancia + " km");
-        } else {
-            System.out.println("Não há caminho disponível entre as capitais selecionadas.");
+        String destino = scanner.nextLine().toUpperCase();
+        
+        if (!grafo.capitais.containsKey(origem) || !grafo.capitais.containsKey(destino)) {
+            System.out.println("Uma ou ambas as capitais informadas não são válidas.");
+            return;
         }
-
+        
+        ResultadoRota rotaTerrestre = grafo.calcularMenorRotaTerrestre(origem, destino);
+        
+        exibirResultado(rotaTerrestre, origem, destino);
+        
         scanner.close();
     }
-}
+
+    private static GrafoCapitais inicializarGrafo() {
+        GrafoCapitais grafo = new GrafoCapitais();
+        
+        // Adicionando capitais
+        grafo.adicionarCapital("AC");
+        grafo.adicionarCapital("AL");
+        grafo.adicionarCapital("AP");
+        grafo.adicionarCapital("AM");
+        grafo.adicionarCapital("BA");
+        grafo.adicionarCapital("CE");
+        grafo.adicionarCapital("DF");
+        grafo.adicionarCapital("ES");
+        grafo.adicionarCapital("GO");
+        grafo.adicionarCapital("MA");
+        grafo.adicionarCapital("MT");
+        grafo.adicionarCapital("MS");
+        grafo.adicionarCapital("MG");
+        grafo.adicionarCapital("PA");
+        grafo.adicionarCapital("PB");
+        grafo.adicionarCapital("PR");
+        grafo.adicionarCapital("PE");
+        grafo.adicionarCapital("PI");
+        grafo.adicionarCapital("RJ");
+        grafo.adicionarCapital("RN");
+        grafo.adicionarCapital("RS");
+        grafo.adicionarCapital("RO");
+        grafo.adicionarCapital("RR");
+        grafo.adicionarCapital("SC");
+        grafo.adicionarCapital("SP");
+        grafo.adicionarCapital("SE");
+        grafo.adicionarCapital("TO");
+
+        // Adicionando conexões
+        grafo.adicionarConexaoTerrestre("ES", "RJ", 521);
+        grafo.adicionarConexaoTerrestre("RJ", "SP", 429);
+        grafo.adicionarConexaoTerrestre("SP", "PR", 408);
+        grafo.adicionarConexaoTerrestre("PR", "SC", 300);
+        grafo.adicionarConexaoTerrestre("SC", "RS", 476);
+        grafo.adicionarConexaoTerrestre("SP", "MG", 586);
+        grafo.adicionarConexaoTerrestre("MG", "DF", 740);
+        grafo.adicionarConexaoTerrestre("DF", "GO", 209);
+        grafo.adicionarConexaoTerrestre("GO", "MT", 934);
+        grafo.adicionarConexaoTerrestre("MT", "MS", 694);
+        grafo.adicionarConexaoTerrestre("MS", "SP", 1014);
+        grafo.adicionarConexaoTerrestre("MG", "BA", 1372);
+        grafo.adicionarConexaoTerrestre("BA", "SE", 356);
+        grafo.adicionarConexaoTerrestre("SE", "AL", 294);
+        grafo.adicionarConexaoTerrestre("AL", "PE", 285);
+        grafo.adicionarConexaoTerrestre("PE", "PB", 120);
+        grafo.adicionarConexaoTerrestre("PB", "RN", 185);
+        grafo.adicionarConexaoTerrestre("PE", "PI", 800);
+        grafo.adicionarConexaoTerrestre("PI", "MA", 446);
+        grafo.adicionarConexaoTerrestre("MA", "PA", 806);
+        grafo.adicionarConexaoTerrestre("PA", "AP", 308);
+        grafo.adicionarConexaoTerrestre("PA", "AM", 5299);
+        grafo.adicionarConexaoTerrestre("AM", "RR", 785);
+        grafo.adicionarConexaoTerrestre("AM", "RO", 901);
+        grafo.adicionarConexaoTerrestre("RO", "AC", 544);
+        grafo.adicionarConexaoTerrestre("BA", "TO", 1213);
+        grafo.adicionarConexaoTerrestre("TO", "MA", 1355);
+        grafo.adicionarConexaoTerrestre("MG", "ES", 524);
+        grafo.adicionarConexaoTerrestre("MG", "RJ", 434);
+        
+        return grafo;
+    }
+
