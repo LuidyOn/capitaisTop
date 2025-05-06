@@ -31,7 +31,6 @@ public class Main {
     private static GrafoCapitais inicializarGrafo() {
         GrafoCapitais grafo = new GrafoCapitais();
         
-        // Adicionando capitais
         grafo.adicionarCapital("AC");
         grafo.adicionarCapital("AL");
         grafo.adicionarCapital("AP");
@@ -60,7 +59,6 @@ public class Main {
         grafo.adicionarCapital("SE");
         grafo.adicionarCapital("TO");
 
-        // Adicionando conexões
         grafo.adicionarConexaoTerrestre("ES", "RJ", 521);
         grafo.adicionarConexaoTerrestre("RJ", "SP", 429);
         grafo.adicionarConexaoTerrestre("SP", "PR", 408);
