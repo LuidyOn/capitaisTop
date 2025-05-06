@@ -43,3 +43,21 @@ public class GrafoCapitais {
                 }
             }
         }
+
+        List<String> caminho = new ArrayList<>();
+        String atual = destino;
+        
+        if (predecessores.get(atual) == null && !origem.equals(destino)) {
+            return null;
+        }
+        
+        while (atual != null) {
+            caminho.add(atual);
+            atual = predecessores.get(atual);
+        }
+        
+        Collections.reverse(caminho);
+        
+        return new ResultadoRota(caminho, distancias.get(destino));
+    }
+}
