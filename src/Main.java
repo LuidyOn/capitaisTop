@@ -92,3 +92,40 @@ public class Main {
         return grafo;
     }
 
+ private static void exibirCabecalho() {
+        System.out.println("Sistema de Cálculo de Distância entre Capitais Brasileiras");
+        System.out.println("Para facilitar, digite apenas a Sigla dos Estados.");
+        System.out.println();
+    }
+
+    private static void exibirSiglasCapitais() {
+        System.out.println("AC - Rio Branco        AL - Maceió        AP - Macapá");
+        System.out.println("AM - Manaus            BA - Salvador      CE - Fortaleza");
+        System.out.println("DF - Brasília          ES - Vitória       GO - Goiânia");
+        System.out.println("MA - São Luís          MT - Cuiabá        MS - Campo Grande");
+        System.out.println("MG - Belo Horizonte    PA - Belém         PB - João Pessoa");
+        System.out.println("PR - Curitiba          PE - Recife        PI - Teresina");
+        System.out.println("RJ - Rio de Janeiro    RN - Natal         RS - Porto Alegre");
+        System.out.println("RO - Porto Velho       RR - Boa Vista     SC - Florianópolis");
+        System.out.println("SP - São Paulo         SE - Aracaju       TO - Palmas");
+        System.out.println();
+    }
+
+    private static void exibirResultado(ResultadoRota rota, String origem, String destino) {
+        if (rota == null) {
+            System.out.println("Não há rota terrestre entre " + NomesCapitais.NOMES.get(origem) + 
+                             " e " + NomesCapitais.NOMES.get(destino));
+        } else {
+            System.out.println("Distância total: " + rota.distanciaTotal + " km");
+            System.out.println("\nCaminho percorrido:");
+            
+            for (int i = 0; i < rota.caminho.size(); i++) {
+                String sigla = rota.caminho.get(i);
+                System.out.print(NomesCapitais.NOMES.get(sigla) + " (" + sigla + ")");
+                if (i < rota.caminho.size() - 1) {
+                    System.out.print(" -> ");
+                }
+            }
+        }
+    }
+}
