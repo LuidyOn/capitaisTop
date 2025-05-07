@@ -93,7 +93,6 @@ public class Main {
         grafo.adicionarConexaoTerrestre("CE", "PB", 688);
         grafo.adicionarConexaoTerrestre("CE", "PE", 800);
 
-
         return grafo;
     }
 

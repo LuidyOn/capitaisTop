@@ -89,9 +89,9 @@ public class Main {
         grafo.adicionarConexaoTerrestre("MG", "ES", 524);
         grafo.adicionarConexaoTerrestre("MG", "RJ", 434);
         grafo.adicionarConexaoTerrestre("CE", "PI", 634);
-        grafo.adicionarConexaoTerrestre("CE", "RN", 537);
-        grafo.adicionarConexaoTerrestre("CE", "PB", 688);
-        grafo.adicionarConexaoTerrestre("CE", "PE", 800);
+grafo.adicionarConexaoTerrestre("CE", "RN", 537);
+grafo.adicionarConexaoTerrestre("CE", "PB", 688);
+grafo.adicionarConexaoTerrestre("CE", "PE", 800);
 
 
         return grafo;
