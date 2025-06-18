@@ -72,5 +72,5 @@ public class MapaPanel extends JPanel {
     public void setRota(ResultadoRota rota) {
         this.rota = rota;
         repaint();
-    }
+    }
 }
