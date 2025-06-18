@@ -1,5 +1,5 @@
 import model.*;
-import utils.NomesCapitais;
+
 import java.util.*;
 
 public class Main {
@@ -93,8 +93,9 @@ public class Main {
         grafo.adicionarConexaoTerrestre("CE", "PB", 688);
         grafo.adicionarConexaoTerrestre("CE", "PE", 800);
 
+
         return grafo;
-    }c
+    }
 
  private static void exibirCabecalho() {
         System.out.println("Sistema de Cálculo de Distância entre Capitais Brasileiras");

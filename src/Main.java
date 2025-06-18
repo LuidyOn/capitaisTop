@@ -1,5 +1,5 @@
 import model.*;
-import utils.NomesCapitais;
+
 import java.util.*;
 
 public class Main {
