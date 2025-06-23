@@ -6,6 +6,7 @@ import javax.swing.*;
 
 import java.awt.*;
 import java.util.Arrays;
+import App.Main;
 
 public class Interface extends JFrame {
     private GrafoCapitais grafo;
